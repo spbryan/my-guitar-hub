@@ -4,22 +4,37 @@
  * Date: 2019-05-26
  ***********************************************/
 
+ //JQuery References
+var title = $("#song-title-input");
+var artist = $("#artist-input");
+var genre = $("#genre-input");
+var proficiency = $("#proficiency-input");
+
 $(document).ready(function () {
 
     function addASong() {
-        alert("boom");
-    }
+        event.preventDefault();
 
-    $('#exampleModal').on('show.bs.modal', function (event) {
-        debugger;
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var recipient = button.data('whatever') // Extract info from data-* attributes
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
-        modal.find('.modal-title').text('New message to ' + recipient)
-        modal.find('.modal-body input').val(recipient)
-      })
+        var song = {
+            title: title.val().trim(),
+            artist: artist.val().trim(),
+            genre: genre.val().trim(),
+            proficiency: proficiency.val().trim()
+        };
+        title.val("");
+        artist.val("");
+        genre.val("");
+        proficiency.val("");
+
+        console.log(song);
+
+        // if (userid !== "") {
+        //     comicbookRef = firebase.database().ref(userid + "/comicbooks");
+        //     comicbookRef.push(newComic);
+        // } else {
+        //     displayInventory(newComic, null);
+        // };
+    }
 
     /** On-Click for topic buttons */
     $(document).on("click", ".add-song-button", addASong);
