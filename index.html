@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 
@@ -52,9 +54,25 @@
                                 <button type="button" class="btn btn-default add-song-button" data-dismiss="modal">Add Song</button>
                             </div>
                         </div>
-
                     </div>
                 </div>
+            </div>
+        </section>
+        <section class="row center">
+            <div class="col m12">
+                <table class="table table-sm table-hover" id='song-list-table'>
+                    <thead>
+                        <tr id = "header">
+                            <th scope="col">Title</th>
+                            <th scope="col">Artist/Group</th>
+                            <th scope="col">Genre</th>
+                            <th scope="col">Proficiency (1-10)</th>
+                            <!-- <th></th> -->
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
             </div>
         </section>
     </section>
