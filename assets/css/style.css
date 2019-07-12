@@ -27,3 +27,8 @@ button {
     background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%);   
     border: 2px solid rgb(28, 110, 164); 
 }
+
+/* ID Styling */
+#my-input {
+    width: 350px;
+}

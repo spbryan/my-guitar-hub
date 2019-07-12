@@ -48,8 +48,8 @@ $(document).ready(function () {
 
     function displayInventory(snapshot) {
         $("#table-body").empty();
-        snapshot.forEach(function(childSnapshot) {
-            childSnapshot.forEach(function(song) {
+        snapshot.forEach(function (childSnapshot) {
+            childSnapshot.forEach(function (song) {
                 var inventoryId = song.key;
                 console.log(inventoryId);
                 var newRow = $("<tr>");
@@ -72,6 +72,7 @@ $(document).ready(function () {
                 $("#song-list-table > tbody").prepend(newRow);
             });
         });
+        $('#song-list-table').DataTable();
     }
 
     /**
@@ -91,6 +92,18 @@ $(document).ready(function () {
 
         row.push(song);
     }
+
+    // $("#my-input").on("keyup", function () {
+    //     var value = $(this).val().toLowerCase();
+    //     $("#song-list-table tr").filter(function () {
+    //         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    //     });
+    // });
+
+    // $('#song-list-table').DataTable();
+    // $('#song-list-table').DataTable( {
+        // "order": [[ 3, "desc" ]]
+    // } );
 
     /**
      * Listens for changes to the values on the data base
