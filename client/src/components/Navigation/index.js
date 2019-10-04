@@ -48,7 +48,7 @@ class Navigation extends Component {
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <NavLink className="ml-auto" activeStyle={{ fontWeight: "bold", textDecoration: "underline" }} id="home" to="/home">
+                    <NavLink className="ml-auto" activeStyle={{ fontWeight: "bold", textDecoration: "underline" }} id="home" to="/">
                         Home
                     </NavLink>
                     <NavLink className="ml-auto" activeStyle={{ fontWeight: "bold", textDecoration: "underline" }} id="playlist" to="/playlist">
