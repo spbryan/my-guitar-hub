@@ -4,10 +4,22 @@ const routes = require("./routes");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const passport = require('passport');
+const session = require('express-session');
+
+const db = require("./models");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+})); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -16,6 +28,9 @@ if (process.env.NODE_ENV === "production") {
 
 // Define API routes here
 app.use(routes);
+
+//load passport strategies
+require("./config/passport/passport.js")(passport, db.User);
 
 // Connect to the Mongo DB
 mongoose.connect(

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 // import logo from "./logo.svg";
 import Navigation from "./components/Navigation";
+import LoginScreen from "./pages/LoginScreen";
 import Home from "./pages/Home";
 import Gear from "./pages/Gear";
 import Playlist from "./pages/Playlist";
@@ -18,7 +19,7 @@ class App extends Component {
         <div>
           <Navigation />
           <Container id="body">
-            {/* <Route exact path="/" component={Home} /> */}
+            <Route exact path="/loginscreen" component={LoginScreen} />
             <Route exact path="/" render={() => <Home />} />
             <Route exact path="/gear" render={() => <Gear />} />
             <Route exact path="/playlist" render={() => <Playlist />} />

@@ -66,6 +66,9 @@ class Navigation extends Component {
                     <NavLink className="ml-auto" activeStyle={{ fontWeight: "bold", textDecoration: "underline" }} id="gear" to="/gear">
                         Gear
                     </NavLink>
+                    <NavLink className="ml-auto" activeStyle={{ fontWeight: "bold", textDecoration: "underline" }} activeClassName="active" id="login" to="/loginscreen">
+                        Sign-in/Sign-up
+                    </NavLink>
                     {/* <NavLink onClick={this.handleLogOut} className="ml-auto" id="logout" to="/">
                         Logout for {this.props.devName}
                     </NavLink> */}

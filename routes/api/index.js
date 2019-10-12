@@ -1,6 +1,10 @@
 const path = require("path");
 const router = require("express").Router();
 const songRoutes = require("./songs");
+const userRoutes = require("./users");
+
+// User routes
+router.use("/users", userRoutes);
 
 // Song Routes
 router.use("/songs", songRoutes);
