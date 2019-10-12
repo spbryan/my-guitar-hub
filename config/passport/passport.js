@@ -12,8 +12,6 @@ module.exports = function (passport, user) {
     var User = user;
     var LocalStrategy = require('passport-local').Strategy;
 
-    console.log(JSON.stringify(user));
-
     //serialize
     passport.serializeUser(function (user, done) {
         done(null, user.id);
@@ -41,16 +39,12 @@ module.exports = function (passport, user) {
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
         function (req, email, password, done) {
-            console.log("<debug> email: " + email);
-            console.log("<debug> password: " + password);
             var generateHash = function (password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
 
-            User.findOne({
-                where: {
-                    email: email
-                }
+            User.find({
+                email: email
             }).then(function (user) {
                 if (user) {
                     console.log("that email is already taken");
@@ -82,8 +76,8 @@ module.exports = function (passport, user) {
     passport.use('local-signin', new LocalStrategy(
         {
             // by default, local strategy uses username and password, we will override with email
-            usernameField: 'username',
-            passwordField: 'username',
+            usernameField: 'email',
+            passwordField: 'password',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
 
@@ -94,9 +88,7 @@ module.exports = function (passport, user) {
             }
             console.log(" in local -signin ", + password);
             User.findOne({
-                where: {
-                    email: email
-                }
+                email: email
             }).then(function (user) {
                 if (!user) {
                     console.log('for login could not find email matching this email ' + email);
@@ -111,7 +103,9 @@ module.exports = function (passport, user) {
                         message: 'Incorrect password.'
                     });
                 }
-                var userinfo = user.get();
+                console.log(JSON.stringify(user));
+                var userinfo = user;
+                // var userinfo = user.get();
                 return done(null, userinfo);
             }).catch(function (err) {
                 console.log("Error:", err);
