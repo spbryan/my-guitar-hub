@@ -34,7 +34,7 @@ class LoginForm extends Component {
     API.login(this.state)
       .then(res => {
         console.log(res.data);
-        sessionStorage.setItem("userID", res.data.id);
+        sessionStorage.setItem("userID", res.data._id);
         sessionStorage.setItem("email", res.data.email);
         this.redirectLocation = '/home';
         this.setState({ redirect: true });  // causes a re-render so put it last

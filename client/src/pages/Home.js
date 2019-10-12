@@ -16,18 +16,19 @@ class Home extends Component {
     //     teamChosen: null,
     //     dropdownLabel: "Choose Team"
     // }
-    // componentDidMount() {
-    //     if (!sessionStorage.getItem("userID")) {
-    //         console.log("MAIN: no user ID in session");
-    //         this.props.updateWhichNav(con.NOUSER);
-    //     } else if (sessionStorage.getItem("role") === 'SCRUM MASTER') {
-    //         console.log("MAIN: returning nav admin from main");
-    //         this.props.updateWhichNav(con.ADMIN);
-    //     } else {
-    //         console.log("MAIN: returning nav developer from main");
-    //         this.props.updateWhichNav(con.DEVELOPER);
-    //     }
-    // }
+    componentDidMount() {
+        console.log("<debug> session storage" + JSON.stringify(sessionStorage));
+        // if (!sessionStorage.getItem("userID")) {
+        //     console.log("MAIN: no user ID in session");
+        //     this.props.updateWhichNav(con.NOUSER);
+        // } else if (sessionStorage.getItem("role") === 'SCRUM MASTER') {
+        //     console.log("MAIN: returning nav admin from main");
+        //     this.props.updateWhichNav(con.ADMIN);
+        // } else {
+        //     console.log("MAIN: returning nav developer from main");
+        //     this.props.updateWhichNav(con.DEVELOPER);
+        // }
+    }
 
     render() {
         return (
