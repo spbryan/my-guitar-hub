@@ -11,6 +11,13 @@
 import axios from "axios";
 
 export default {
+  register: function (registerData) {
+    return axios.post("/api/users/register", registerData);
+  },
+
+  login: function (loginData) {
+    return axios.post("/api/users/login", loginData);
+  },
 
   getSongs: function() {
     return axios.get("/api/songs");
