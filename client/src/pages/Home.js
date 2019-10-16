@@ -1,3 +1,12 @@
+/********************************
+  * Home Page
+  * Starting point with site information and user login
+  * 
+  * @author Sean Bryan
+  * 
+  * 2019-10-16
+  ********************************/
+
 import React, { Component } from 'react';
 // import { Redirect } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
@@ -5,7 +14,7 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 // import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
-// import con from "../utils/const";
+import con from "../utils/const";
 import './Home.css';
 
 class Home extends Component {
@@ -16,18 +25,14 @@ class Home extends Component {
     //     teamChosen: null,
     //     dropdownLabel: "Choose Team"
     // }
+
     componentDidMount() {
         console.log("<debug> session storage" + JSON.stringify(sessionStorage));
-        // if (!sessionStorage.getItem("userID")) {
-        //     console.log("MAIN: no user ID in session");
-        //     this.props.updateWhichNav(con.NOUSER);
-        // } else if (sessionStorage.getItem("role") === 'SCRUM MASTER') {
-        //     console.log("MAIN: returning nav admin from main");
-        //     this.props.updateWhichNav(con.ADMIN);
-        // } else {
-        //     console.log("MAIN: returning nav developer from main");
-        //     this.props.updateWhichNav(con.DEVELOPER);
-        // }
+        if (!sessionStorage.getItem("userID")) {
+            this.props.updateWhichNav(con.LOGGED_OUT);
+        } else {
+            this.props.updateWhichNav(con.LOGGED_IN);
+        }
     }
 
     render() {

@@ -1,7 +1,16 @@
+/********************************
+  * Main Navigation bar
+  * 
+  * @author Sean Bryan
+  * 
+  * 2019-10-16
+  ********************************/
+
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import con from "../../utils/const";
 import NavDropdown from 'react-bootstrap/NavDropdown';
 // import './style.css';
 
@@ -18,7 +27,7 @@ class Navigation extends Component {
     handleLogOut = props => {
         console.log(sessionStorage)
         sessionStorage.clear();
-        // this.props.updateWhichNav(con.NOUSER);
+        this.props.updateWhichNav(con.LOGGED_OUT);
     }
 
     updateWidth = () => {
@@ -66,12 +75,12 @@ class Navigation extends Component {
                     <NavLink className="ml-auto" activeStyle={{ fontWeight: "bold", textDecoration: "underline" }} id="gear" to="/gear">
                         Gear
                     </NavLink>
-                    <NavLink className="ml-auto" activeStyle={{ fontWeight: "bold", textDecoration: "underline" }} activeClassName="active" id="login" to="/loginscreen">
+                    {/* <NavLink className="ml-auto" activeStyle={{ fontWeight: "bold", textDecoration: "underline" }} activeClassName="active" id="login" to="/loginscreen">
                         Sign-in/Sign-up
-                    </NavLink>
-                    {/* <NavLink onClick={this.handleLogOut} className="ml-auto" id="logout" to="/">
-                        Logout for {this.props.devName}
                     </NavLink> */}
+                    <NavLink onClick={this.handleLogOut} className="ml-auto" id="logout" to="/">
+                        Log Out
+                    </NavLink>
                 </Navbar.Collapse>
             </Navbar >
         )
