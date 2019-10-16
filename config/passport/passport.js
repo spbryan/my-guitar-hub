@@ -19,16 +19,19 @@ module.exports = function (passport, user) {
 
     // deserialize user 
     passport.deserializeUser(function (id, done) {
-        User.findOne({
-            where: {
-                id: id
-            }
+        User.find({
+            _id: id
+            // where: {
+            //     id: id
+            // }
         }).then(function (user) {
             if (user) {
-                done(null, user.get());
+                done(null, user);
             } else {
                 done(user.errors, null);
             }
+        }).catch(function (err) {
+            console.log('error: ', err);
         });
     });
 

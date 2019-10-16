@@ -1,3 +1,11 @@
+/********************************
+  * Login Form
+  * 
+  * @author Sean Bryan
+  * 
+  * 2019-10-16
+  ********************************/
+
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import { Redirect } from 'react-router-dom';
@@ -36,7 +44,7 @@ class LoginForm extends Component {
         console.log(res.data);
         sessionStorage.setItem("userID", res.data._id);
         sessionStorage.setItem("email", res.data.email);
-        this.redirectLocation = '/home';
+        this.redirectLocation = '/';
         this.setState({ redirect: true });  // causes a re-render so put it last
       })
       .catch(err => {
