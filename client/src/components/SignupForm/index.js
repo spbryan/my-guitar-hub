@@ -37,7 +37,7 @@ class SignupForm extends Component {
         console.log(res.data);
         sessionStorage.setItem("userID", res.data.id);
         sessionStorage.setItem("email", res.data.email);
-        this.redirectLocation = '/home';
+        this.redirectLocation = '/';
         this.setState({ redirect: true });  // causes a re-render so put it last
       })
       .catch(err => {

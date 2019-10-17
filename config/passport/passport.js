@@ -49,7 +49,8 @@ module.exports = function (passport, user) {
             User.find({
                 email: email
             }).then(function (user) {
-                if (user) {
+                // if (user) {
+                if (!isEmpty(user)) {
                     console.log("that email is already taken");
                     return done(null, false, {
                         message: 'That email is already taken'
@@ -63,9 +64,11 @@ module.exports = function (passport, user) {
                     };
                     User.create(data).then(function (newUser, created) {
                         if (!newUser) {
+                            console.log("<debug> !newUser");
                             return done(null, false);
                         }
                         if (newUser) {
+                            console.log("<debug> newUser");
                             return done(null, newUser);
                         }
                     });
@@ -118,4 +121,13 @@ module.exports = function (passport, user) {
             });
         }
     ));
+}
+
+function isEmpty(obj) {
+    for(var prop in obj) {
+        if(obj.hasOwnProperty(prop))
+            return false;
+    }
+
+    return true;
 }
