@@ -29,7 +29,7 @@ class LoginScreen extends Component {
               < Login  getNav={this.props.getNav} />
             </Tab>
             <Tab eventKey="Signup" title="Sign-up">
-              <Signup />
+              <Signup getNav={this.props.getNav}/>
             </Tab>
           </Tabs>
 
