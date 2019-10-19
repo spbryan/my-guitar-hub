@@ -7,7 +7,7 @@
   ********************************/
 
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 // import logo from "./logo.svg";
 import Navigation from "./components/Navigation";
@@ -37,13 +37,11 @@ class App extends Component {
   updateWhichNav = navType => {
     console.log("in update which nav bjt");
     if (navType === con.LOGGED_OUT) {
-      console.log("<debug> naveType is logged out");
       this.setState({
         whichNav: con.LOGGED_OUT,
       });
     }
     else {
-      console.log("<debug> naveType is logged in");
       this.setState({
         whichNav: con.LOGGED_IN,
       });

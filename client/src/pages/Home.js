@@ -27,7 +27,7 @@ class Home extends Component {
     // }
 
     componentDidMount() {
-        console.log("<debug> session storage" + JSON.stringify(sessionStorage));
+        // console.log("<debug> session storage" + JSON.stringify(sessionStorage));
         if (!sessionStorage.getItem("userID")) {
             this.props.updateWhichNav(con.LOGGED_OUT);
         } else {
