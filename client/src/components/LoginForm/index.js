@@ -57,7 +57,7 @@ class LoginForm extends Component {
 
   getNav = event => {
     console.log("in the getNav..." + sessionStorage);
-    if (sessionStorage.userID == undefined) {
+    if (sessionStorage.userID === undefined) {
       console.log("not logged in");
       this.setState({ isLoggedIn: false });
     } else {

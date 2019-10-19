@@ -12,7 +12,7 @@ const songSchema = new Schema({
   videoLinks: { type: [String]},
   instructLinks: { type: [String]},
   tabLinks: { type: [String]},
-  proficiencyRating: { type: Number, required: true },
+  proficiencyRating: { type: String, required: true },
   image: { type: String}
 });
 
