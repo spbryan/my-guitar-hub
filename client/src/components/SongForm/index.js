@@ -15,16 +15,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 class SongForm extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   song_title: '',
-    //   artist: '',
-    //   genre: '',
-    //   guitar_type: '',
-    //   proficiency: ''
-    // };
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   state = {
     userId: '',

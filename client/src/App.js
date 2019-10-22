@@ -12,6 +12,7 @@ import Container from 'react-bootstrap/Container';
 // import logo from "./logo.svg";
 import Navigation from "./components/Navigation";
 import NavLogin from "./components/NavLogin";
+import SongForm from "./components/SongForm";
 import LoginScreen from "./pages/LoginScreen";
 import Home from "./pages/Home";
 import Gear from "./pages/Gear";
@@ -72,6 +73,7 @@ class App extends Component {
             <Route exact path="/practice" render={() => <Practice updateWhichNav={this.updateWhichNav}/>} />
             <Route exact path="/reference" render={() => <Reference updateWhichNav={this.updateWhichNav}/>} />
             <Route exact path="/theory" render={() => <Theory updateWhichNav={this.updateWhichNav}/>} />
+            <Route exact path="/songform" render={() => <SongForm updateWhichNav={this.updateWhichNav}/>} />
             {/* <Route exact path="/home" render={() => <Home updateWhichNav={this.updateWhichNav} />} />
               <Route exact path="/loginscreen" component={LoginScreen} />
               <Route exact path="/admin" render={() => <Admin updateWhichNav={this.updateWhichNav} />} />
