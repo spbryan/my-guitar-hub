@@ -35,6 +35,10 @@ export default {
     return axios.get("/api/songs/" + id);
   },
 
+  getSongByUserId: function(id) {
+    return axios.get("/api/songs/user/" + id);
+  },
+
   deleteSong: function(id) {
     return axios.delete("/api/songs/" + id);
   }
