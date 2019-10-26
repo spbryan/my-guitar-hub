@@ -35,7 +35,7 @@ class SignupForm extends Component {
     API.register(this.state)
       .then(res => {
         console.log(res.data);
-        sessionStorage.setItem("userID", res.data.id);
+        sessionStorage.setItem("userID", res.data._id);
         sessionStorage.setItem("email", res.data.email);
         this.redirectLocation = '/';
         this.setState({ redirect: true });  // causes a re-render so put it last
