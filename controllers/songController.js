@@ -19,6 +19,11 @@ module.exports = {
       .then(dbSong => res.json(dbSong))
       .catch(err => res.status(422).json(err));
   },
+  findByUserId: function(req, res) {
+    db.Song.find({userId:req.params.id})
+      .then(dbSong => res.json(dbSong))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
     console.log("<debug> inside create and " + JSON.stringify(req.body));
     db.Song.create(req.body)

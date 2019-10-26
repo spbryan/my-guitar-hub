@@ -36,7 +36,6 @@ class App extends Component {
 
   // pass this function to the components to tell app which nav bar to load
   updateWhichNav = navType => {
-    console.log("in update which nav bjt");
     if (navType === con.LOGGED_OUT) {
       this.setState({
         whichNav: con.LOGGED_OUT,
@@ -47,7 +46,6 @@ class App extends Component {
         whichNav: con.LOGGED_IN,
       });
     }
-    console.log(this.state.whichNav);
   }
 
   switchOnLogin = () => {

@@ -15,20 +15,13 @@ router.route("/")
   .post(songController.create);
 
 // Matches with "/api/songs/:id"
-router
-  .route("/:id")
+router.route("/:id")
   .get(songController.findById)
   .put(songController.update)
   .delete(songController.remove);
 
-// Matches with "/api/sessions/team/:teamName/:sessionDate"
-// router
-//   .route("/team/:teamName/:sessionDate")
-//   .get(sessionController.findByNameAndDate)
-
-// Matches with "/api/sessions/range/:teamName/:sessionDateLow/:sessionDateHigh"
-// router
-//   .route("/range/:teamName/:sessionDateLow/:sessionDateHigh")
-//   .get(sessionController.findByNameAndDateRange)
+// Matches with "/api/songs/user/:id"
+router.route("/user/:id")
+  .get(songController.findByUserId)
 
 module.exports = router;

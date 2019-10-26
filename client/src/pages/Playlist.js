@@ -11,7 +11,9 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from "react-bootstrap/Button";
+import SongTable from "../components/SongTable";
 import con from "../utils/const";
+import API from "../utils/API";
 import './Playlist.css';
 
 class Playlist extends Component {
@@ -28,10 +30,12 @@ class Playlist extends Component {
         this.setState({
             redirect: false
         })
+        this.getSongs();
     }
 
     state = {
-        redirect: false
+        redirect: false,
+        songData: []
     };
 
     redirectLocation = '';
@@ -41,6 +45,24 @@ class Playlist extends Component {
         // console.log("<debug> session storage" + JSON.stringify(sessionStorage));
         this.redirectLocation = '/songform';
         this.setState({ redirect: true });  // causes a re-render so put it last
+    };
+
+    /********************
+     * API Router Calls
+    ********************/
+    getSongs = () => {
+        API.getSongByUserId(sessionStorage.getItem("userID"))
+            .then(res =>
+                this.setState({
+                    songData: res.data
+                })
+            )
+            .catch(err => {
+                alert("Playlist Page: get songs error: " + err);
+                this.setState({
+                    songData: []
+                })
+            });
     };
 
     render() {
@@ -63,6 +85,7 @@ class Playlist extends Component {
                                 onClick={this.handleOpenForm}>Add New Song</Button>
                         </Col>
                     </Row>
+                    <SongTable data={this.state.songData} />
                 </Container>
             </div>
         );
