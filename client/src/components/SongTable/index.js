@@ -43,18 +43,50 @@ const columns = [
   },
 ];
 
-const handleChange = (state) => {
-  // You can use setState or dispatch with something like Redux so we can use the retrieved data
-  console.log("Boom!");
-};
+// const handleChange = (state) => {
+//   // You can use setState or dispatch with something like Redux so we can use the retrieved data
+//   console.log("Boom!");
+// };
 
-const handleClick = (state) => {
-  // You can use setState or dispatch with something like Redux so we can use the retrieved data
-  console.log("Boom! " + state.id);
-};
+// const handleClick = (state) => {
+//   // You can use setState or dispatch with something like Redux so we can use the retrieved data
+//   console.log("Boom! " + JSON.stringify(state._id));
+//   this.redirectLocation = '/song';
+//   this.setState({ redirect: true });  // causes a re-render so put it last
+// };
 
 class SongTable extends Component {
+  state = {
+    redirect: false,
+    song: []
+  };
+
+  redirectLocation = '';
+  song = '';
+
+  handleChange = (state) => {
+    // You can use setState or dispatch with something like Redux so we can use the retrieved data
+    console.log("Boom!");
+  };
+  
+  handleClick = (state) => {
+    // You can use setState or dispatch with something like Redux so we can use the retrieved data
+    console.log("Boom! " + JSON.stringify(state._id));
+    this.redirectLocation = '/song';
+    this.song = state;
+    this.setState({ 
+      redirect: true 
+    });  // causes a re-render so put it last
+  };
+
   render() {
+    if (this.state.redirect) {
+      // return <Redirect to={this.redirectLocation} />;
+      return (<Redirect to={{
+        pathname: this.redirectLocation,
+        state: { song: this.song }
+    }} />)
+    }
     return (
       <DataTable
         // title="Song List"
@@ -65,11 +97,12 @@ class SongTable extends Component {
         highlightOnHover={true}
         pointerOnHover={true}
         selectableRows
-        onRowSelected={handleChange}
-        onRowClicked={handleClick}
+        onRowSelected={this.handleChange}
+        onRowClicked={this.handleClick}
         pagination={true}
       />
-    )}
+    )
+  }
 }
 
 export default SongTable;

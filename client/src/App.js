@@ -20,6 +20,7 @@ import Playlist from "./pages/Playlist";
 import Practice from "./pages/Practice";
 import Reference from "./pages/Reference";
 import Theory from "./pages/Theory";
+import Song from "./pages/Song";
 import con from "./utils/const";
 import "./App.css";
 
@@ -72,6 +73,7 @@ class App extends Component {
             <Route exact path="/reference" render={() => <Reference updateWhichNav={this.updateWhichNav}/>} />
             <Route exact path="/theory" render={() => <Theory updateWhichNav={this.updateWhichNav}/>} />
             <Route exact path="/songform" render={() => <SongForm updateWhichNav={this.updateWhichNav}/>} />
+            <Route exact path="/song" render={(props) => <Song {...props}/>}/>
             {/* <Route exact path="/home" render={() => <Home updateWhichNav={this.updateWhichNav} />} />
               <Route exact path="/loginscreen" component={LoginScreen} />
               <Route exact path="/admin" render={() => <Admin updateWhichNav={this.updateWhichNav} />} />
