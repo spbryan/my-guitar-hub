@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "my-guitar-hub",
   "version": "1.0.0",
-  "description": "Mern Demo",
+  "description": "Central site for personal guitar skill tracking and training",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
