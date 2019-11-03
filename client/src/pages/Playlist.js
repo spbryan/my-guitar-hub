@@ -43,7 +43,7 @@ class Playlist extends Component {
     handleOpenForm = event => {
         event.preventDefault();
         // console.log("<debug> session storage" + JSON.stringify(sessionStorage));
-        this.redirectLocation = '/songform';
+        this.redirectLocation = '/songinput';
         this.setState({ redirect: true });  // causes a re-render so put it last
     };
 
@@ -77,15 +77,15 @@ class Playlist extends Component {
                             <h1>Playlist</h1>
                         </Col>
                     </Row>
+                    <SongTable data={this.state.songData} />
                     <Row>
-                        <Col align="center">
+                        <Col align="right">
                             <Button
                                 type="button"
                                 className="new-btn ml-4"
                                 onClick={this.handleOpenForm}>Add New Song</Button>
                         </Col>
                     </Row>
-                    <SongTable data={this.state.songData} />
                 </Container>
             </div>
         );

@@ -10,6 +10,7 @@ import { Redirect } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import SongUpdate from "../components/SongUpdate";
 import Button from "react-bootstrap/Button";
 import con from "../utils/const";
 import API from "../utils/API";
@@ -31,7 +32,7 @@ class Song extends Component {
         // })
         // this.getSongs();
         console.log("Test");
-        console.log("this.props.location: " +  JSON.stringify(this.props.location.state.song)); //&& this.props.location.state.referrer");
+        // console.log("this.props.location: " +  JSON.stringify(this.props.location.state.song)); //&& this.props.location.state.referrer");
     }
 
     state = {
@@ -70,9 +71,10 @@ class Song extends Component {
                 <Container id="container">
                     <Row>
                         <Col align="center">
-                            <h1>Song</h1>
+                            <h1>{this.props.location.state.song.title}</h1>
                         </Col>
                     </Row>
+                    <SongUpdate data={this.props.location.state.song} />
                     {/* <Row>
                         <Col align="center">
                             <Button

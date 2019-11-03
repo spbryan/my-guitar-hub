@@ -14,13 +14,19 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-class SongForm extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+class SongUpdate extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  // spb{"musicLinks":[],"videoLinks":[],"instructLinks":[],"tabLinks":[],
+  // "_id":"5db4b77616c4c91b04fc83f4","userId":"5db4945f6649102fc4f519f0",
+  // "title":"If You Could Read My Mind","artist":"Gordon Lightfoot",
+  // "genre":"Folk","guitarType":"Acoustic","proficiencyRating":"Master","__v":0}
 
   state = {
     userId: '',
+    _id: '',
     title: '',
     artist: '',
     genre: '',
@@ -29,9 +35,17 @@ class SongForm extends Component {
     redirect: false
   };
 
+
   componentDidMount() {
+    console.log("spb" + JSON.stringify(this.props.data));
     this.setState({
-      userId: sessionStorage.userID,
+      userId: this.props.data.userId,
+      _id: this.props.data._id,
+      title: this.props.data.title,
+      artist: this.props.data.artist,
+      genre: this.props.data.genre,
+      guitarType: this.props.data.guitarType,
+      proficiencyRating: this.props.data.proficiencyRating,
       redirect: false
     })
   }
@@ -59,15 +73,31 @@ class SongForm extends Component {
       });
   }
 
+  handleDelete = event => {
+    event.preventDefault();
+    API.deleteSong(this.state._id)
+      .then(res => {
+        console.log(res.data);
+        this.redirectLocation = '/playlist';
+        this.setState({ redirect: true });  // causes a re-render so put it last
+      })
+      .catch(err => {
+        console.log("in catch for submit song form");
+        console.log(err);
+        this.redirectLocation = '/authfailure';
+        this.setState({ redirect: true });   // causes a re-render so put it last
+      });
+  }
+
   render() {
     if (this.state.redirect) {
       return <Redirect to={this.redirectLocation} />;
     }
     return (
       <div className="inner-container">
-        <h2 align="center" className="header">
+        {/* <h2 align="center" className="header">
           Enter a Song
-        </h2>
+        </h2> */}
         <Row>
           <Col>
             <Form.Row>
@@ -112,7 +142,7 @@ class SongForm extends Component {
               <Form.Group as={Col} controlId="formGridGuitarType">
                 <Form.Label>Guitar Type</Form.Label>
                 <Form.Control as="select" name="guitarType" onChange={this.handleInputChange}>
-                  <option>{this.state.guitar_type}</option>
+                  <option>{this.state.guitarType}</option>
                   <option>Electric</option>
                   <option>Acoustic</option>
                   <option>Ukulele</option>
@@ -127,7 +157,7 @@ class SongForm extends Component {
               <Form.Group as={Col} controlId="formGridGuitarType">
                 <Form.Label>Proficiency</Form.Label>
                 <Form.Control as="select" name="proficiencyRating" onChange={this.handleInputChange}>
-                  <option>{this.state.proficiency}</option>
+                  <option>{this.state.proficiencyRating}</option>
                   <option>Novice</option>
                   <option>Intermediate</option>
                   <option>Advanced</option>
@@ -143,7 +173,11 @@ class SongForm extends Component {
             <Button
               type="button"
               className="new-btn ml-4"
-              onClick={this.handleFormSubmit}>Submit</Button>
+              onClick={this.handleFormSubmit}>Update</Button>
+            <Button
+              type="button"
+              className="new-btn ml-4"
+              onClick={this.handleDelete}>Delete</Button>
           </Col>
         </Row>
       </div>
@@ -152,4 +186,4 @@ class SongForm extends Component {
 
 }
 
-export default SongForm;
+export default SongUpdate;
