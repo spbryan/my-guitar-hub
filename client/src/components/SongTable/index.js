@@ -64,14 +64,12 @@ class SongTable extends Component {
   redirectLocation = '';
   song = '';
 
-  handleChange = (state) => {
-    // You can use setState or dispatch with something like Redux so we can use the retrieved data
-    console.log("Boom!");
-  };
+  // handleChange = (state) => {
+  //   // You can use setState or dispatch with something like Redux so we can use the retrieved data
+  //   console.log("Boom!");
+  // };
   
   handleClick = (state) => {
-    // You can use setState or dispatch with something like Redux so we can use the retrieved data
-    console.log("Boom! " + JSON.stringify(state._id));
     this.redirectLocation = '/song';
     this.song = state;
     this.setState({ 
@@ -96,8 +94,8 @@ class SongTable extends Component {
         striped={true}
         highlightOnHover={true}
         pointerOnHover={true}
-        selectableRows
-        onRowSelected={this.handleChange}
+        // selectableRows
+        // onRowSelected={this.handleChange}
         onRowClicked={this.handleClick}
         pagination={true}
       />
