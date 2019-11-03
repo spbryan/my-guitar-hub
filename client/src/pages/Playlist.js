@@ -41,9 +41,7 @@ class Playlist extends Component {
     redirectLocation = '';
 
     handleOpenForm = event => {
-        event.preventDefault();
-        // console.log("<debug> session storage" + JSON.stringify(sessionStorage));
-        this.redirectLocation = '/songinput';
+        event.preventDefault();this.redirectLocation = '/songinput';
         this.setState({ redirect: true });  // causes a re-render so put it last
     };
 
