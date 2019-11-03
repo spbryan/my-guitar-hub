@@ -64,11 +64,9 @@ module.exports = function (passport, user) {
                     };
                     User.create(data).then(function (newUser, created) {
                         if (!newUser) {
-                            console.log("<debug> !newUser");
                             return done(null, false);
                         }
                         if (newUser) {
-                            console.log("<debug> newUser");
                             return done(null, newUser);
                         }
                     });
